@@ -1,0 +1,857 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <link rel="stylesheet" href="src/tw_style.css" />
+    <link rel="stylesheet" href="src/style.css" />
+  </head>
+  <body>
+    <header class="header">
+      <div class="content-container">
+        <div class="header__top-container">
+          <a class="header__logo" href="/de-de">
+            <svg>
+              <use
+                xlink:href="https://topwipers.ndv.biz/svg/sprites.svg#logo"
+              ></use>
+            </svg>
+          </a>
+          <div class="header__location" title="LOCATION">
+            <svg>
+              <use
+                xlink:href="https://topwipers.ndv.biz/svg/sprites.svg#location-mark"
+              ></use>
+            </svg>
+            <span class="header__location-value">Germany</span>
+          </div>
+
+          <nav class="header__menu">
+            <button
+              class="header__mob-search-toggler"
+              data-role="search-toggler"
+            >
+              <svg>
+                <use
+                  xlink:href="https://topwipers.ndv.biz/svg/sprites.svg#loupe"
+                ></use>
+              </svg>
+              <svg class="header__menu-cross">
+                <use
+                  xlink:href="https://topwipers.ndv.biz/svg/sprites.svg#cross"
+                ></use>
+              </svg>
+            </button>
+          </nav>
+          <button
+            class="header__burger"
+            aria-label="Открыть меню"
+            aria-expanded="false"
+            data-role="headerBurger"
+          >
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
+        </div>
+        <nav class="header__mob-menu collapse">
+          <div class="header__location" title="CITY">
+            <svg>
+              <use
+                xlink:href="https://topwipers.ndv.biz/svg/sprites.svg#location-mark"
+              ></use>
+            </svg>
+            <span class="header__location-value">Germany</span>
+          </div>
+        </nav>
+        <div class="header__mob-search collapse"></div>
+      </div>
+      <div class="header__popups content-container">
+        <div
+          class="popup region-popup region-popup_detected"
+          id="regionDetectedModal"
+        >
+          <div class="popup__wrapper region-popup__wrapper">
+            <div class="popup__content region-popup__content mb-3rem">
+              Ist Ihre Region:
+              <span id="current-region" data-code="de"> Germany </span>?
+            </div>
+            <div class="popup__interface region-popup__interface">
+              <button
+                class="popup__interface-button region-popup__interface-button main-action-btn main-action-btn_light_blue_bg"
+                data-role="accept-reg-btn"
+              >
+                Richtig
+              </button>
+              <button
+                class="popup__interface-button region-popup__interface-button main-action-btn"
+                data-role="reg-selection-btn"
+              >
+                Region auswählen
+              </button>
+            </div>
+          </div>
+        </div>
+        <div
+          class="popup region-popup region-popup_selection"
+          id="regionSelectionModal"
+        >
+          <div class="popup__wrapper region-popup__wrapper">
+            <div class="popup__header region-popup__header mb-2rem">
+              <span>Region auswählen</span>
+              <button
+                aria-label="Закрыть выбор региона"
+                id="closeRegionModalBtn"
+              ></button>
+            </div>
+            <form class="popup__selects region-popup__selects">
+              <select
+                autocomplete="off"
+                name="region"
+                id="region-selection-modal"
+                tabindex="-1"
+                class="tomselected ts-hidden-accessible"
+              >
+                <option value="">Region auswählen</option>
+                <option value="be">Belgium</option>
+                <option value="hu">Hungary</option>
+                <option value="de">Germany</option>
+                <option value="fr">France</option>
+                <option value="it">Italy</option>
+                <option value="es">Spain</option>
+                <option value="pl">Poland</option>
+              </select>
+              <div class="ts-wrapper single plugin-dropdown_input">
+                <div
+                  class="ts-control"
+                  role="combobox"
+                  aria-haspopup="listbox"
+                  aria-expanded="false"
+                  aria-controls="region-selection-modal-ts-dropdown"
+                  id="region-selection-modal-ts-control"
+                  tabindex="0"
+                >
+                  <input
+                    class="items-placeholder"
+                    tabindex="-1"
+                    placeholder=" Region auswählen "
+                  />
+                </div>
+                <div
+                  class="ts-dropdown single plugin-dropdown_input"
+                  style="display: none"
+                >
+                  <div class="dropdown-input-wrap">
+                    <input
+                      type="text"
+                      autocomplete="off"
+                      size="1"
+                      tabindex="-1"
+                      class="dropdown-input"
+                      placeholder=" Region auswählen "
+                    />
+                  </div>
+                  <div
+                    role="listbox"
+                    tabindex="-1"
+                    class="ts-dropdown-content"
+                    id="region-selection-modal-ts-dropdown"
+                  ></div>
+                </div>
+              </div>
+            </form>
+            <div class="popup__interface region-popup__interface">
+              <button
+                class="popup__interface-button region-popup__interface-button main-action-btn main-action-btn_light_blue_bg"
+                data-role="accept-selected-reg-btn"
+              >
+                Fertig
+              </button>
+              <button
+                class="popup__interface-button region-popup__interface-button main-action-btn"
+                data-role="reg-reset-btn"
+              >
+                Abbrechen
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <div class="subheader-sections-wrapper">
+      <div class="content-container">
+        <section class="select-auto-section subheader-section">
+          <svg class="no-mobile-icon icon-auto">
+            <use
+              xlink:href="https://topwipers.ndv.biz/svg/sprites.svg#car"
+            ></use>
+          </svg>
+          <a href="https://topwipers.ndv.biz/de-de/auto/wischerblatter">
+            <span class="hover-opacity">Wählen Sie ein Auto</span>
+          </a>
+        </section>
+        <section class="types-product-section subheader-section">
+          <ul class="subheader-section__menu">
+            <li class="subheader-section__menu-item">
+              <a
+                href="https://topwipers.ndv.biz/de-de/catalog/wischerblatter"
+                class="subheader-section__menu-link hover-opacity"
+              >
+                Wischerblätter
+              </a>
+            </li>
+            <li class="subheader-section__dropdown">
+              <button class="subheader-section__dropdown-toggler" type="button">
+                ...
+              </button>
+              <ul class="subheader-section__dropdown-menu"></ul>
+            </li>
+          </ul>
+        </section>
+      </div>
+    </div>
+
+    <div class="subheader-search-auto">
+      <div class="subheader-search-auto-wrapper content-container">
+        <div class="subheader-search-auto__header">
+          <div class="search-item-header--white">
+            Finden Sie die Wischerblätter speziell für Ihr Fahrzeug:
+          </div>
+        </div>
+        <div class="subheader-search-auto__forms mt-15">
+          <form action="" class="subheader-search-auto__auto-model">
+            <select
+              autocomplete="off"
+              name="brand"
+              id="brand-input-subheader"
+              tabindex="-1"
+              class="tomselected ts-hidden-accessible"
+            >
+              <option value="">Automarke</option>
+              <option value="4706">Abarth</option>
+              <option value="4929">Acura</option>
+              <option value="4346">AHK</option>
+              <option value="4299">Aito</option>
+              <option value="4330">Aiways</option>
+              <option value="4333">Aixam</option>
+              <option value="4940">Alfa Romeo</option>
+              <option value="4713">Alpina</option>
+              <option value="4317">Alpine</option>
+              <option value="4336">Artega</option>
+              <option value="4666">Aston Martin</option>
+              <option value="4964">Audi</option>
+              <option value="4325">Avatr</option>
+              <option value="4752">BAIC</option>
+              <option value="4444">Baojun</option>
+              <option value="4322">Belgee</option>
+              <option value="6322">Bentley</option>
+              <option value="4462">Berkhof</option>
+              <option value="5029">BMW</option>
+              <option value="4460">Boldmen</option>
+              <option value="4477">Borgward</option>
+              <option value="4559">BOVA</option>
+              <option value="4782">Brilliance</option>
+              <option value="4352">Bugatti</option>
+              <option value="4296">Buick</option>
+              <option value="6366">BYD</option>
+              <option value="5076">Cadillac</option>
+              <option value="4358">Casalini</option>
+              <option value="4796">Changan</option>
+              <option value="4681">Chery</option>
+              <option value="5095">Chevrolet</option>
+              <option value="5146">Chrysler</option>
+              <option value="4361">Cirelli</option>
+              <option value="5167">Citroen</option>
+              <option value="4725">Cupra</option>
+              <option value="4308">Dacia</option>
+              <option value="4472">Dadi</option>
+              <option value="5224">Daewoo</option>
+              <option value="4535">DAF</option>
+              <option value="5244">Daihatsu</option>
+              <option value="4732">Daimler</option>
+              <option value="4366">Dallara</option>
+              <option value="4879">Datsun</option>
+              <option value="4437">Dayun</option>
+              <option value="4736">DeLorean</option>
+              <option value="4439">Denza</option>
+              <option value="4483">Derways</option>
+              <option value="5260">Dodge</option>
+              <option value="4649">DongFeng</option>
+              <option value="4854">DS</option>
+              <option value="4368">e.GO</option>
+              <option value="4370">Econelo</option>
+              <option value="4372">Elaris</option>
+              <option value="4375">EMC</option>
+              <option value="4377">EVO</option>
+              <option value="4606">Evolute</option>
+              <option value="4789">Exeed</option>
+              <option value="6375">FangChengBao</option>
+              <option value="4765">FAW</option>
+              <option value="4831">Ferrari</option>
+              <option value="5276">Fiat</option>
+              <option value="4383">Fisker</option>
+              <option value="5318">Ford</option>
+              <option value="4303">Forthing</option>
+              <option value="4884">Foton</option>
+              <option value="4891">GAC</option>
+              <option value="4827">GAC Aion</option>
+              <option value="4386">GAC Gonow</option>
+              <option value="5360">GAZ</option>
+              <option value="6389">Geely</option>
+              <option value="4871">Genesis</option>
+              <option value="5781">GMC</option>
+              <option value="6331">Great Wall</option>
+              <option value="4500">Haima</option>
+              <option value="4510">Haval</option>
+              <option value="4577">HiPhi</option>
+              <option value="5367">Honda</option>
+              <option value="4611">Hongqi</option>
+              <option value="5393">Hummer</option>
+              <option value="5397">Hyundai</option>
+              <option value="4388">ICK-X</option>
+              <option value="4573">IM Motors</option>
+              <option value="4391">Ineos</option>
+              <option value="6348">Infiniti</option>
+              <option value="4863">Iran Khodro</option>
+              <option value="5454">Isuzu</option>
+              <option value="5462">Iveco</option>
+              <option value="4902">JAC</option>
+              <option value="4427">Jaecoo</option>
+              <option value="5469">Jaguar</option>
+              <option value="5485">Jeep</option>
+              <option value="4641">Jetour</option>
+              <option value="4553">Jetta</option>
+              <option value="4592">Kaiyi</option>
+              <option value="4286">KAMAZ</option>
+              <option value="4416">KG Mobility (KGM)</option>
+              <option value="5497">Kia</option>
+              <option value="4562">Lamborghini</option>
+              <option value="5568">Lancia</option>
+              <option value="5584">Land Rover</option>
+              <option value="5595">LDV</option>
+              <option value="4481">LEVC</option>
+              <option value="5597">Lexus</option>
+              <option value="4697">Lifan</option>
+              <option value="4422">Ligier</option>
+              <option value="5564">Lincoln</option>
+              <option value="4531">Livan</option>
+              <option value="4585">LiXiang</option>
+              <option value="4408">Lotus</option>
+              <option value="4406">Lucid</option>
+              <option value="4488">Luxgen</option>
+              <option value="4624">Lynk &amp; Co</option>
+              <option value="4738">Man</option>
+              <option value="5617">Maserati</option>
+              <option value="4793">Maybach</option>
+              <option value="5629">Mazda</option>
+              <option value="4451">McLaren</option>
+              <option value="5664">Mercedes-Benz</option>
+              <option value="5726">Mercury</option>
+              <option value="5728">MG</option>
+              <option value="5741">Mini</option>
+              <option value="5751">Mitsubishi</option>
+              <option value="4581">Neoplan</option>
+              <option value="4400">NIO</option>
+              <option value="5791">Nissan</option>
+              <option value="4898">Omoda</option>
+              <option value="5845">Opel</option>
+              <option value="4397">Ora</option>
+              <option value="5886">Peugeot</option>
+              <option value="4475">Polar Stone</option>
+              <option value="4288">Polestar</option>
+              <option value="5936">Pontiac</option>
+              <option value="5941">Porsche</option>
+              <option value="4328">Qoros</option>
+              <option value="4747">Ravon</option>
+              <option value="5949">Renault</option>
+              <option value="4458">Rivian</option>
+              <option value="4503">Rolls-Royce</option>
+              <option value="5996">Rover</option>
+              <option value="6008">SAAB</option>
+              <option value="4889">Saipa</option>
+              <option value="4465">Samsung</option>
+              <option value="4543">Scania</option>
+              <option value="6018">SEAT</option>
+              <option value="6038">Skoda</option>
+              <option value="4632">Skywell</option>
+              <option value="6062">Smart</option>
+              <option value="4545">Solaris</option>
+              <option value="4550">Sollers</option>
+              <option value="4491">Soueast</option>
+              <option value="4393">Sportequipe</option>
+              <option value="6073">SsangYong</option>
+              <option value="6087">Subaru</option>
+              <option value="6107">Suzuki</option>
+              <option value="4569">SWM</option>
+              <option value="4868">Tagaz</option>
+              <option value="4597">Tank</option>
+              <option value="4821">Tesla</option>
+              <option value="6136">Toyota</option>
+              <option value="6207">UAZ</option>
+              <option value="4495">VGV</option>
+              <option value="6215">Volkswagen</option>
+              <option value="6286">Volvo</option>
+              <option value="4745">Vortex</option>
+              <option value="4602">Voyah</option>
+              <option value="4557">Weltmeister</option>
+              <option value="4347">Wey</option>
+              <option value="4320">XCITE</option>
+              <option value="4435">Xiaomi</option>
+              <option value="4339">Xpeng</option>
+              <option value="6317">ZAZ</option>
+              <option value="4635">Zeekr</option>
+              <option value="4526">Zotye</option>
+              <option value="4440">ZX Auto</option>
+            </select>
+            <div class="ts-wrapper single plugin-dropdown_input">
+              <div
+                class="ts-control"
+                role="combobox"
+                aria-haspopup="listbox"
+                aria-expanded="false"
+                aria-controls="brand-input-subheader-ts-dropdown"
+                id="brand-input-subheader-ts-control"
+                tabindex="0"
+              >
+                <input
+                  class="items-placeholder"
+                  tabindex="-1"
+                  placeholder=" Automarke "
+                />
+              </div>
+              <div
+                class="ts-dropdown single plugin-dropdown_input"
+                style="display: none"
+              >
+                <div class="dropdown-input-wrap">
+                  <input
+                    type="text"
+                    autocomplete="off"
+                    size="1"
+                    tabindex="-1"
+                    class="dropdown-input"
+                    placeholder=" Automarke "
+                  />
+                </div>
+                <div
+                  role="listbox"
+                  tabindex="-1"
+                  class="ts-dropdown-content"
+                  id="brand-input-subheader-ts-dropdown"
+                ></div>
+              </div>
+            </div>
+            <select
+              autocomplete="off"
+              name="model"
+              id="model-input-subheader"
+              disabled=""
+              tabindex="-1"
+              class="tomselected ts-hidden-accessible"
+            >
+              <option value="">Automodell</option>
+            </select>
+            <div
+              class="ts-wrapper single plugin-dropdown_input has-options disabled locked"
+            >
+              <div
+                class="ts-control"
+                role="combobox"
+                aria-haspopup="listbox"
+                aria-expanded="false"
+                aria-controls="model-input-subheader-ts-dropdown"
+                id="model-input-subheader-ts-control"
+                tabindex="-1"
+              >
+                <input
+                  class="items-placeholder"
+                  tabindex="-1"
+                  placeholder=" Automodell "
+                />
+              </div>
+              <div
+                class="ts-dropdown single plugin-dropdown_input"
+                style="display: none"
+              >
+                <div class="dropdown-input-wrap">
+                  <input
+                    type="text"
+                    autocomplete="off"
+                    size="1"
+                    tabindex="-1"
+                    class="dropdown-input"
+                    placeholder=" Automodell "
+                    disabled=""
+                  />
+                </div>
+                <div
+                  role="listbox"
+                  tabindex="-1"
+                  class="ts-dropdown-content"
+                  id="model-input-subheader-ts-dropdown"
+                ></div>
+              </div>
+            </div>
+            <select
+              autocomplete="off"
+              name="modifications"
+              id="modifications-input-subheader"
+              disabled=""
+              tabindex="-1"
+              class="tomselected ts-hidden-accessible"
+            >
+              <option value="">Baujahr</option>
+            </select>
+            <div
+              class="ts-wrapper single plugin-dropdown_input has-options disabled locked"
+            >
+              <div
+                class="ts-control"
+                role="combobox"
+                aria-haspopup="listbox"
+                aria-expanded="false"
+                aria-controls="modifications-input-subheader-ts-dropdown"
+                id="modifications-input-subheader-ts-control"
+                tabindex="-1"
+              >
+                <input
+                  class="items-placeholder"
+                  tabindex="-1"
+                  placeholder=" Baujahr "
+                />
+              </div>
+              <div
+                class="ts-dropdown single plugin-dropdown_input"
+                style="display: none"
+              >
+                <div class="dropdown-input-wrap">
+                  <input
+                    type="text"
+                    autocomplete="off"
+                    size="1"
+                    tabindex="-1"
+                    class="dropdown-input"
+                    placeholder=" Baujahr "
+                    disabled=""
+                  />
+                </div>
+                <div
+                  role="listbox"
+                  tabindex="-1"
+                  class="ts-dropdown-content"
+                  id="modifications-input-subheader-ts-dropdown"
+                ></div>
+              </div>
+            </div>
+            <button
+              type="submit"
+              class="main-action-btn main-action-btn_light_blue_bg"
+            >
+              Suche
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <div class="content-container content-container__breadcrumbs">
+      <div class="breadcrumbs">
+        <div class="breadcrumbs-wrapper mt-2rem">
+          <nav class="breadcrumb-item info-text--active">
+            <a href="https://topwipers.com/de-de">Homepage</a>
+          </nav>
+          <nav class="breadcrumb-item info-text--active">/</nav>
+          <nav class="breadcrumb-item active info-text">Blog</nav>
+        </div>
+      </div>
+    </div>
+
+    <!-- CONTENT -->
+
+    <div class="page-blog">
+      <div class="page-blog__content page-blog__content--top content-container">
+        <div class="title-icon">
+          <img src="images/blog-icon.svg" alt="" />
+        </div>
+        <h1>TopWipers Blog</h1>
+      </div>
+
+      <div
+        class="page-blog__content page-blog__content--main content-container"
+      >
+        <section class="blog-section">
+          <div class="blog-section__list blog-section__list--big">
+            <article class="blog-article">
+              <img src="images/winter-wipers.jpg" alt="" />
+              <h3 class="blog-article__title">
+                Die besten Scheibenwischer für den Winter 2025/2026
+              </h3>
+              <p class="blog-article__excerpt">
+                Обзор щеток для зимних условий (снег, лед) с акцентом на
+                силиконовые и обогреваемые модели.
+              </p>
+            </article>
+
+            <article class="blog-article">
+              <img src="images/top-wipers.jpg" alt="" />
+              <h3 class="blog-article__title">
+                Top 10 der besten Scheibenwischer im Jahr 2025
+              </h3>
+              <p class="blog-article__excerpt">
+                Рейтинг популярных щеток с обзором характеристик, включая Bosch
+                и Valeo.
+              </p>
+            </article>
+
+            <article class="blog-article">
+              <img src="images/europe-cars.jpg" alt="" />
+              <h3 class="blog-article__title">
+                Щетки стеклоочистителей для популярных моделей автомобилей в
+                Европе
+              </h3>
+              <p class="blog-article__excerpt">
+                Обзор щеток для популярных моделей (VW Golf, Renault Clio, Opel
+                Astra).
+              </p>
+            </article>
+          </div>
+        </section>
+
+        <section class="blog-section">
+          <h2 class="blog-section__title">
+            Wie man die besten Scheibenwischer auswählt
+          </h2>
+
+          <div class="blog-section__list">
+            <article class="blog-article">
+              <img src="images/how-to-choose.jpg" alt="" />
+              <h3 class="blog-article__title">
+                Wie man die besten Scheibenwischer für Ihr Auto auswählt:
+                Praktische Tipps
+              </h3>
+              <p class="blog-article__excerpt">
+                Подробное руководство по выбору щеток с учетом размера, типа
+                крепления, материала и совместимости.
+              </p>
+            </article>
+
+            <article class="blog-article">
+              <img src="images/wiper-fits.jpg" alt="" />
+              <h3 class="blog-article__title">
+                Arten von Scheibenwischer-Befestigungen: Der vollständige
+                Leitfaden
+              </h3>
+              <p class="blog-article__excerpt">
+                Обзор креплений (крючковое, байонетное, пинчевое) с объяснением
+                совместимости.
+              </p>
+            </article>
+          </div>
+        </section>
+
+        <section class="blog-section">
+          <h2 class="blog-section__title">
+            Pflege und Problemlösung für Scheibenwischer: Praktische Tipps
+          </h2>
+
+          <div class="blog-section__list">
+            <article class="blog-article">
+              <img src="images/wiper-installation.jpg" alt="" />
+              <h3 class="blog-article__title">
+                Wann und wie oft sollten Scheibenwischer gewechselt werden:
+                Praktischer Leitfaden
+              </h3>
+              <p class="blog-article__excerpt">
+                Объясняет признаки износа (полосы, шум) и сроки замены (6–12
+                месяцев). Включает советы по замене.
+              </p>
+            </article>
+
+            <article class="blog-article">
+              <img src="images/wiper-care.jpg" alt="" />
+              <h3 class="blog-article__title">
+                Wie man Scheibenwischer pflegt für maximale Langlebigkeit:
+                Praktische Tipps
+              </h3>
+              <p class="blog-article__excerpt">
+                Советы по чистке щеток и защите от замерзания для продления
+                срока службы.
+              </p>
+            </article>
+
+            <article class="blog-article">
+              <img src="images/wiper-stripes.jpg" alt="" />
+              <h3 class="blog-article__title">
+                Warum Scheibenwischer Streifen hinterlassen und wie man es
+                behebt: Praktische Lösungen
+              </h3>
+              <p class="blog-article__excerpt">
+                Объясняет причины полос (износ, грязь) и предлагает решения
+                (чистка, замена).
+              </p>
+            </article>
+          </div>
+        </section>
+
+        <section class="blog-section video-instruction">
+          <div class="video-instruction__top">
+            <img src="images/youtube.svg" alt="" />
+            <h2 class="blog-section__title">
+              YouTube-Tutorials zur Installation von Scheibenwischern: Die
+              besten Anleitungen
+            </h2>
+          </div>
+
+          <div class="video-instruction__list">
+            <article class="video-instruction__item">
+              <div class="video-instruction__img-wrapper">
+                <img src="images/preview-ba.jpg" alt="" />
+              </div>
+
+              <div class="video-instruction__title">
+                Scheibenwischer wechseln: Bayonet-befestigung Anleitung
+              </div>
+
+              <div class="video-instruction__footer">
+                <!-- <div class="video-instruction-item__views">231K views</div> -->
+
+                <div class="video-instruction-item__date">
+                  Published on: 1/10/2024
+                </div>
+              </div>
+            </article>
+
+            <article class="video-instruction__item">
+              <div class="video-instruction__img-wrapper">
+                <img src="images/preview-dntl11.jpg" alt="" />
+              </div>
+
+              <div class="video-instruction__title">
+                Scheibenwischer wechseln: DNTL1.1-befestigung Anleitung
+              </div>
+
+              <div class="video-instruction__footer">
+                <!-- <div class="video-instruction-item__views">231K views</div> -->
+
+                <div class="video-instruction-item__date">
+                  Published on: 1/10/2024
+                </div>
+              </div>
+            </article>
+
+            <article class="video-instruction__item">
+              <div class="video-instruction__img-wrapper">
+                <img src="images/preview-hook.jpg" alt="" />
+              </div>
+
+              <div class="video-instruction__title">
+                Scheibenwischer wechseln: Hook-befestigung Anleitung
+              </div>
+
+              <div class="video-instruction__footer">
+                <!-- <div class="video-instruction-item__views">231K views</div> -->
+
+                <div class="video-instruction-item__date">
+                  Published on: 20/09/2024
+                </div>
+              </div>
+            </article>
+
+            <article class="video-instruction__item">
+              <div class="video-instruction__img-wrapper">
+                <img src="images/preview-mg.jpg" alt="" />
+              </div>
+
+              <div class="video-instruction__title">
+                Scheibenwischer wechseln: MG(GWB071)-befestigung Anleitung
+              </div>
+
+              <div class="video-instruction__footer">
+                <!-- <div class="video-instruction-item__views">231K views</div> -->
+
+                <div class="video-instruction-item__date">
+                  Published on: 20/09/2024
+                </div>
+              </div>
+            </article>
+
+            <article class="video-instruction__item">
+              <div class="video-instruction__img-wrapper">
+                <img src="images/preview-pb19.jpg" alt="" />
+              </div>
+
+              <div class="video-instruction__title">
+                Scheibenwischer wechseln: Push Button 19mm-befestigung Anleitung
+              </div>
+
+              <div class="video-instruction__footer">
+                <!-- <div class="video-instruction-item__views">231K views</div> -->
+
+                <div class="video-instruction-item__date">
+                  Published on: 23/09/2024
+                </div>
+              </div>
+            </article>
+
+            <article class="video-instruction__item">
+              <div class="video-instruction__img-wrapper">
+                <img src="images/preview-sm.jpg" alt="" />
+              </div>
+
+              <div class="video-instruction__title">
+                Scheibenwischer wechseln: Side Mounting-befestigung Anleitung
+              </div>
+
+              <div class="video-instruction__footer">
+                <!-- <div class="video-instruction-item__views">231K views</div> -->
+
+                <div class="video-instruction-item__date">
+                  Published on: 24/09/2024
+                </div>
+              </div>
+            </article>
+
+            <article class="video-instruction__item">
+              <div class="video-instruction__img-wrapper">
+                <img src="images/preview-sp22.jpg" alt="" />
+              </div>
+
+              <div class="video-instruction__title">
+                Scheibenwischer wechseln: Side Pin 22 mm-befestigung Anleitung
+              </div>
+
+              <div class="video-instruction__footer">
+                <!-- <div class="video-instruction-item__views">231K views</div> -->
+
+                <div class="video-instruction-item__date">
+                  Published on: 23/09/2024
+                </div>
+              </div>
+            </article>
+
+            <article class="video-instruction__item">
+              <div class="video-instruction__img-wrapper">
+                <img src="images/preview-vatl51.jpg" alt="" />
+              </div>
+
+              <div class="video-instruction__title">
+                Scheibenwischer wechseln: VATL5.1 -befestigung Anleitung
+              </div>
+
+              <div class="video-instruction__footer">
+                <!-- <div class="video-instruction-item__views">231K views</div> -->
+
+                <div class="video-instruction-item__date">
+                  Published on: 24/09/2024
+                </div>
+              </div>
+            </article>
+          </div>
+        </section>
+      </div>
+    </div>
+  </body>
+</html>
